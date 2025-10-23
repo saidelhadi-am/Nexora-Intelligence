@@ -1,0 +1,23 @@
+# app.py - Nexora Intelligence MVP
+
+# Install required libraries (uncomment if needed in Colab)
+# !pip install transformers streamlit pandas --quiet
+
+import streamlit as st
+import pandas as pd
+from transformers import pipeline
+
+# Initialize AI analyzer
+analyzer = pipeline("sentiment-analysis")
+
+# Streamlit dashboard
+st.title("Nexora Intelligence AI Dashboard")
+st.write("Analyze text with AI instantly!")
+
+# Input text
+user_input = st.text_area("Enter text for analysis:", "Type your text here...")
+
+# Analyze button
+if st.button("Analyze"):
+    result = analyzer(user_input)
+    st.write("AI Analysis Result:", result)
